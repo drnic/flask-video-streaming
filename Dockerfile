@@ -12,7 +12,7 @@ RUN curl -s http://archive.raspbian.org/raspbian.public.key -o - | apt-key add -
     apt-get update && apt-get install python-picamera -y && \
     pip install flask
 
-ENV CAMERA=pi
+ENV CAMERA=pi HFLIP=false VFLIP=false
 
 COPY . /app
 

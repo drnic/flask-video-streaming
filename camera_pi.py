@@ -1,4 +1,5 @@
 import io
+import os
 import time
 import picamera
 from base_camera import BaseCamera
@@ -8,6 +9,10 @@ class Camera(BaseCamera):
     @staticmethod
     def frames():
         with picamera.PiCamera() as camera:
+            if os.environ.get('HFLIP'):
+                camera.hflip = True
+            if os.environ.get('VFLIP'):
+                camera.vflip = True
             # let camera warm up
             time.sleep(2)
 
